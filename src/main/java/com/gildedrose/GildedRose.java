@@ -3,6 +3,7 @@ package com.gildedrose;
 import java.util.Arrays;
 
 class GildedRose {
+    private static final String ITEM_PRINT_FORMAT = "%s, %s, %s";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -36,4 +37,9 @@ class GildedRose {
                 break;
         }
     }
+
+    public String buildItemInfo(Item item){
+        return String.format(ITEM_PRINT_FORMAT, item.name, item.sellIn, item.quality);
+    }
+
 }

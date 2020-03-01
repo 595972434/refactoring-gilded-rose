@@ -16,11 +16,6 @@ public class Item {
         this.quality = quality;
     }
 
-    @Override
-    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
-
     public void updateSellIn(int increment) {
         sellIn += increment;
     }
