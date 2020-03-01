@@ -9,7 +9,7 @@ public class GildedRoseTest {
 
 
     @Test
-    public void sell_in_for_Sulfuras_Hand_of_Ragnaros_should_not_change_by_daily_update() {
+    public void sell_in_for_Sulfuras_Hand_of_Ragnaros_should_not_change_after_daily_update() {
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 5) };
 
         GildedRose app = new GildedRose(items);
@@ -60,7 +60,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_for_Sulfuras_Hand_of_Ragnaros_should_not_change_by_daily_update() {
+    public void quality_for_Sulfuras_Hand_of_Ragnaros_should_not_change_after_daily_update() {
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 5) };
 
         GildedRose app = new GildedRose(items);
@@ -69,7 +69,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_should_reduce_one_by_daily_update_for_normal_item_when_sell_in_greater_than_zero() {
+    public void quality_should_reduce_one_after_daily_update_for_normal_item_when_sell_in_greater_than_zero() {
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 1, 10), //
                 new Item("Elixir of the Mongoose", 2, 10), //
@@ -82,7 +82,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_should_reduce_two_by_daily_update_for_normal_item_when_sell_in_not_greater_than_zero() {
+    public void quality_should_reduce_two_after_daily_update_for_normal_item_when_sell_in_not_greater_than_zero() {
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 0, 10), //
                 new Item("Elixir of the Mongoose", -1, 10), //
@@ -95,7 +95,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_should_increase_one_by_daily_update_for_Aged_Brie_when_sell_in_greater_than_zero() {
+    public void quality_should_increase_one_after_daily_update_for_Aged_Brie_when_sell_in_greater_than_zero() {
         Item[] items = new Item[] {
                 new Item("Aged Brie", 1, 10)}; //
         GildedRose app = new GildedRose(items);
@@ -103,7 +103,7 @@ public class GildedRoseTest {
         assertEquals(11, app.items[0].quality);
     }
     @Test
-    public void quality_should_increase_one_by_daily_update_for_Aged_Brie_when_sell_in_not_greater_than_zero() {
+    public void quality_should_increase_one_after_daily_update_for_Aged_Brie_when_sell_in_not_greater_than_zero() {
         Item[] items = new Item[] {
                 new Item("Aged Brie", 0, 10), //
                 new Item("Aged Brie", -1, 10)}; //
@@ -114,7 +114,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_shouldincrease_one_by_daily_update_for_Backstage_passes_when_sell_in_greater_or_equal_to_eleven() {
+    public void quality_should_increase_one_after_daily_update_for_Backstage_passes_when_sell_in_greater_or_equal_to_eleven() {
         Item[] items = new Item[] {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10), //
                 new Item("Backstage passes to a TAFKAL80ETC concert", 12, 10)}; //
@@ -125,7 +125,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_shouldincrease_two_by_daily_update_for_Backstage_passes_when_sell_in_greater_or_equal_to_six_and_less_than_11() {
+    public void quality_should_increase_two_after_daily_update_for_Backstage_passes_when_sell_in_greater_or_equal_to_six_and_less_than_11() {
         Item[] items = new Item[] {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10), //
                 new Item("Backstage passes to a TAFKAL80ETC concert", 6, 10)}; //
@@ -136,12 +136,25 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void quality_shouldincrease_two_by_daily_update_for_Backstage_passes_when_sell_in_less_than_6() {
+    public void quality_should_increase_two_after_daily_update_for_Backstage_passes_when_sell_in_greater_to_zero_and_less_than_six() {
         Item[] items = new Item[] {
+                new Item("Backstage passes to a TAFKAL80ETC concert", 1, 10), //
                 new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10)}; //
         GildedRose app = new GildedRose(items);
         app.daily_update();
         assertEquals(13, app.items[0].quality);
+        assertEquals(13, app.items[1].quality);
+    }
+
+    @Test
+    public void quality_should_to_be_zero_after_daily_update_for_Backstage_passes_when_sell_in_less_or_equal_to_zero() {
+        Item[] items = new Item[] {
+                new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10), //
+                new Item("Backstage passes to a TAFKAL80ETC concert", -1, 10)}; //
+        GildedRose app = new GildedRose(items);
+        app.daily_update();
+        assertEquals(0, app.items[0].quality);
+        assertEquals(0, app.items[1].quality);
     }
 }
 
