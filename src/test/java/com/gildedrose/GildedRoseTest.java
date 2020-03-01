@@ -61,11 +61,11 @@ public class GildedRoseTest {
 
     @Test
     public void quality_for_Sulfuras_Hand_of_Ragnaros_should_not_change_after_daily_update() {
-        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 5) };
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 80) };
 
         GildedRose app = new GildedRose(items);
         app.daily_update();
-        assertEquals(5, app.items[0].quality);
+        assertEquals(80, app.items[0].quality);
     }
 
     @Test
