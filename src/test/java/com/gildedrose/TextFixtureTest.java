@@ -38,7 +38,7 @@ public class TextFixtureTest {
                 System.out.println(item);
             }
             System.out.println();
-            app.update_quality();
+            app.daily_update();
         }
         String excepted = "OMGHAI!\n" +
                 "-------- day 0 --------\n" +
